@@ -5,7 +5,7 @@ export type Collidable =
     | Phaser.Types.Physics.Arcade.GameObjectWithBody
     | Phaser.Tilemaps.Tile;
 
-export default class IndiaScene extends Phaser.Scene {
+export default class JapanScene extends Phaser.Scene {
     private platforms?: Phaser.Physics.Arcade.StaticGroup;
     private player?: Phaser.Physics.Arcade.Sprite;
     private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -14,11 +14,11 @@ export default class IndiaScene extends Phaser.Scene {
     private starText?: Phaser.GameObjects.Text;
 
     constructor() {
-        super({ key: "IndiaScene" });
+        super({ key: "JapanScene" });
     }
 
     create() {
-        this.add.image(400, 300, "india");
+        this.add.image(400, 300, "japan");
 
         this.platforms = this.physics.add.staticGroup();
         const ground = this.platforms.create(
@@ -32,7 +32,7 @@ export default class IndiaScene extends Phaser.Scene {
         this.platforms.create(50, 250, "ground");
         this.platforms.create(750, 220, "ground");
 
-        this.player = this.physics.add.sprite(100, 188, "dude");
+        this.player = this.physics.add.sprite(700, 338, "dude");
         this.player.setCollideWorldBounds(true);
 
         this.anims.create({
@@ -65,7 +65,7 @@ export default class IndiaScene extends Phaser.Scene {
 
         this.cursors = this.input.keyboard?.createCursorKeys();
 
-        this.star = this.physics.add.sprite(800, 192, "star");
+        this.star = this.physics.add.sprite(100, 200, "star");
         this.star.setCollideWorldBounds(true);
         this.physics.add.collider(this.star, this.platforms);
         this.physics.add.overlap(
@@ -89,7 +89,7 @@ export default class IndiaScene extends Phaser.Scene {
         updateStars();
         this.starText?.setText(`Stars: ${getStars()}`);
 
-        this.scene.start("IndonesiaScene");
+        this.scene.start("IndiaScene");
     }
 
     update() {
